@@ -22,5 +22,4 @@ public class StringBuilderDemo {
     sb = sb.replace(0,6,"HELLO,").reverse();
     System.out.println("hello를 HELLO로 변경 후 리버스한 결과 : " + sb);
   }
-
 }
