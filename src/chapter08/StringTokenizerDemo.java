@@ -23,6 +23,5 @@ public class StringTokenizerDemo {
     while(st1.hasMoreTokens()){
       System.out.println(st1.nextToken());
     }
-
   }
 }
