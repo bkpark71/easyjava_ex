@@ -11,8 +11,18 @@ public class StringTokenizerDemo {
     StringTokenizer st1 = new StringTokenizer(s,",");
     System.out.println(st1.countTokens());
 
-    while(st.hasMoreTokens()){
-      System.out.println(st.nextToken());
+//    while(st.hasMoreTokens()){
+//      System.out.println(st.nextToken());
+//    }
+
+    while(st1.hasMoreTokens()){
+      System.out.println(st1.nextToken());
     }
+
+    st1 = new StringTokenizer(s,",");
+    while(st1.hasMoreTokens()){
+      System.out.println(st1.nextToken());
+    }
+
   }
 }
