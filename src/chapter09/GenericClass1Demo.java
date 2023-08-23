@@ -23,20 +23,27 @@ public class GenericClass1Demo {
     Beer beer= (Beer) c.getBeverage();
     c.setBeverage(new Beverage());
     c.setBeverage(new Object());
-    beer= (Beer) c.getBeverage();
+    //beer= (Beer) c.getBeverage();
 
+    Cup<Boricha> borichaCup = new Cup();
+    borichaCup.setBeverage(new Boricha());
+    Boricha boricha = borichaCup.getBeverage();
 
+    Cup<Beer> beerCup = new Cup<>();
+    beerCup.setBeverage(new Beer());
+    //beerCup.setBeverage(new Boricha());
+    beer = beerCup.getBeverage();
   }
 }
 class Beverage {}
 class Boricha extends Beverage{}
 class Beer extends Beverage{}
-class Cup {
-  private Object beverage;
-  public Object getBeverage() {
+class Cup<T> {
+  private T beverage;
+  public T getBeverage() {
     return beverage;
   }
-  public void setBeverage(Object beverage) {
+  public void setBeverage(T beverage) {
     this.beverage = beverage;
   }
 }

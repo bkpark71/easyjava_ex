@@ -7,6 +7,7 @@ public class GenericTest {
     ArrayList nums = new ArrayList();
     nums.add(10); // Integer로 10 이 auto-boxing 됨
     nums.add(3.14); // Double 로 3.14 가 auto-boxing 됨
+    nums.add("30");
     nums.add("hello");
 
     for (int i = 0; i < nums.size(); i++) {
@@ -14,7 +15,8 @@ public class GenericTest {
         System.out.println((Integer)(nums.get(i)) * 2);
       else if (nums.get(i) instanceof Double)
         System.out.println((Double)(nums.get(i)) * 2);
-      else System.out.println("숫자 타입이 아닙니다.");
+      else if (nums.get(i) instanceof String)
+        System.out.println(Integer.parseInt((String)nums.get(i)));
     }
   }
 }
