@@ -1,5 +1,7 @@
 package chapter09;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.ArrayList;
 
 public class GenericClass1Demo {
@@ -20,9 +22,13 @@ public class GenericClass1Demo {
     }
 
     c.setBeverage(new Beer());
-    Beer beer= (Beer) c.getBeverage();
+    //Beer beer= (Beer) c.getBeverage();
+    Boricha bori = (Boricha)c.getBeverage();
+    bori.drink();
+
     c.setBeverage(new Beverage());
-    c.setBeverage(new Object());
+    Boricha bev = (Boricha) c.getBeverage();
+    //c.setBeverage(new Object());
     //beer= (Beer) c.getBeverage();
 
     Cup<Boricha> borichaCup = new Cup();
@@ -32,13 +38,21 @@ public class GenericClass1Demo {
     Cup<Beer> beerCup = new Cup<>();
     beerCup.setBeverage(new Beer());
     //beerCup.setBeverage(new Boricha());
-    beer = beerCup.getBeverage();
+    Beer beverage = beerCup.getBeverage();
   }
 }
 class Beverage {}
-class Boricha extends Beverage{}
-class Beer extends Beverage{}
-class Cup<T> {
+class Boricha extends Beverage{
+  void drink(){
+    System.out.println("어린아이만 마실수 있다.");
+  }
+}
+class Beer extends Beverage{
+  void cheers(){
+    System.out.println("어른만 마실수 있다.");
+  }
+}
+class Cup<T extends Beverage> {
   private T beverage;
   public T getBeverage() {
     return beverage;
