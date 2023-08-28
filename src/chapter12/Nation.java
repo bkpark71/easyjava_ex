@@ -17,7 +17,7 @@ public class Nation {
   public String toString() { return name; }
   public static final List<Nation> nations = List.of(
       // 인구 단위 백만
-      new Nation("ROK", Nation.Type.LAND, 51.4, 11),
+      new Nation("ROK", Type.LAND, 51.4, 11),
       new Nation("New Zealand", Type.ISLAND, 4.5, 49),
       new Nation("USA", Type.LAND, 318.9, 1),
       new Nation("China", Type.LAND, 1355.7, 2),

@@ -22,17 +22,17 @@ public class SortedDemo {
     s1 = Stream.of("a1", "a2","d2", "b1", "c2");
     s1.sorted((x,y) -> y.hashCode() - x.hashCode())
       .forEach(Util::print);
-    System.out.println();
 
+    System.out.print("\n 나라이름순서 :");
     Nation.nations.stream()
         .sorted(Comparator.comparing(x->x.getName()))
-        .map(x -> x.getName())
+        //.map(x -> x.getName())
         .forEach(Util::printWithParenthesis);
-    System.out.println();
 
+    System.out.print("\n GDP순서 :");
     Nation.nations.stream()
         .sorted(Comparator.comparing(x->x.getGdpRank()))
-        .map(x->x.getName())
+        .map(x-> x.getName() + "," + x.getGdpRank())
         .forEach(Util::printWithParenthesis);
   }
 }
