@@ -17,5 +17,8 @@ public class StatisticDemo {
 
     Stream<String> ss1 = Stream.of("a", "bb", "ccc", "d", "ee"); // max ==> "ccc"
     System.out.println("글자수가 가장 긴 문자 : " + ss1.max((x,y) -> x.length() - y.length()).get());
+
+
+
   }
 }
