@@ -5,14 +5,14 @@ public class OperatorExample {
   public static int maxOrMin(Operator operator) {
     int result = scores[0];
     for (int score : scores) {
-      result = operator.apply(result, score);
+      result = operator.apply(result,score);
     }
     return result;
   }
 
   public static void main(String[] args) {
     //최대값 얻기
-    int max = maxOrMin( (x,y) -> x >= y ? x : y );
+    int max = maxOrMin( (x,y) -> x >= y ? x : y  );
     System.out.println("최대값: " + max);
 
     //최소값 얻기
