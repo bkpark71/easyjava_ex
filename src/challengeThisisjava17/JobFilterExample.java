@@ -16,7 +16,7 @@ public class JobFilterExample {
 
     List<Member> developers = list.stream()
             .filter(x -> x.getJob().equals("개발자"))
-            .collect(Collectors.toList());
+            .toList(); // collect(Collectors.toList());
 
     developers.stream()
         .forEach(m -> System.out.println(m.getName()));
