@@ -1,26 +1,27 @@
 package chapter18;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
-public class DBDemo2 {
+public class DBDemo4 {
+  // Delete 구현
   public static void main(String[] args) throws SQLException{
     Connection conn = makeConnection();
-    Statement statement = conn.createStatement();
+    String sql = "delete from person where phone = ? ;";
 
-    String sql = "insert into person (name, phone, email) values ('홍길동', '013' , 'kya@naver.com');";
+    PreparedStatement preparedStatement = conn.prepareStatement(sql);
 
-//    PreparedStatement preparedStatement = conn.prepareStatement(sql);
-//    preparedStatement.setString(1, "김연아");
-//    preparedStatement.setString(2, "012");
-//    preparedStatement.setString(3, "kya@naver.com");
+    preparedStatement.setString(1, "014");
 
-    int i = statement.executeUpdate(sql);
+    int i = preparedStatement.executeUpdate();
 
-    if(i ==1) System.out.println("데이터 추가 성공");
-    else System.out.println("데이터 추가 실패");
+    if(i ==1) System.out.println("데이터 삭제 성공");
+    else System.out.println("데이터 삭제 실패");
 
     conn.close();
-    statement.close();
+    preparedStatement.close();
   }
 
   static Connection makeConnection(){

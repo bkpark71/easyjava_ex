@@ -2,25 +2,35 @@ package chapter18;
 
 import java.sql.*;
 
-public class DBDemo2 {
+public class DBDemo3 {
   public static void main(String[] args) throws SQLException{
     Connection conn = makeConnection();
-    Statement statement = conn.createStatement();
+    String sql = "insert into person (name, phone, email) values (?, ?, ?);";
 
-    String sql = "insert into person (name, phone, email) values ('홍길동', '013' , 'kya@naver.com');";
+    PreparedStatement preparedStatement = conn.prepareStatement(sql);
 
-//    PreparedStatement preparedStatement = conn.prepareStatement(sql);
-//    preparedStatement.setString(1, "김연아");
-//    preparedStatement.setString(2, "012");
-//    preparedStatement.setString(3, "kya@naver.com");
+    preparedStatement.setString(1, "김연아");
+    preparedStatement.setString(2, "015");
+    preparedStatement.setString(3, "kya1@naver.com");
 
-    int i = statement.executeUpdate(sql);
+    int i = preparedStatement.executeUpdate();
 
     if(i ==1) System.out.println("데이터 추가 성공");
     else System.out.println("데이터 추가 실패");
 
+    String sql1 = "update person set email = ? where phone = ?;";
+
+    PreparedStatement ps = conn.prepareStatement(sql1);
+    ps.setString(1, "hkd@naver.com" );
+    ps.setString(2, "013");
+
+    boolean execute = ps.execute();
+    if(!execute) System.out.println("데이터 수정 성공");
+    else System.out.println("데이터 수정 실패");
+
     conn.close();
-    statement.close();
+    ps.close();
+    preparedStatement.close();
   }
 
   static Connection makeConnection(){
